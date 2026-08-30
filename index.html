@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f8f5ed" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="衣橱日签" />
+    <title>衣橱日签 | Mobile MVP</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell" aria-label="衣橱日签手机网页原型">
+      <section class="phone">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">衣橱日签</p>
+            <h1 id="screenTitle">今日</h1>
+          </div>
+          <button class="icon-btn" id="notifyBtn" type="button" aria-label="每日提醒">
+            <span>◷</span>
+          </button>
+        </header>
+
+        <section class="content">
+          <article class="screen active" id="todayScreen" aria-labelledby="todayTab">
+            <div class="weather-band">
+              <div>
+                <p class="muted" id="weatherPlace">上海 · 今日日常</p>
+                <strong id="weatherNow">24°C 阴，有小雨</strong>
+              </div>
+              <button class="weather-icon" id="weatherRefreshBtn" type="button" aria-label="更新实时天气">☂</button>
+            </div>
+            <div class="weather-actions">
+              <span id="weatherSource">当前使用示例天气</span>
+              <button id="locationBtn" type="button">关联当天真实天气</button>
+            </div>
+
+            <div class="hero-photo">
+              <img src="assets/wardrobe-flatlay.png" alt="日常衣物平铺" />
+              <div class="hero-copy">
+                <p>推荐组合</p>
+                <h2>浅蓝衬衫 + 深色长裤 + 轻薄外套</h2>
+              </div>
+            </div>
+
+            <div class="action-row">
+              <button class="primary-btn" id="wornBtn" type="button">今天就穿这套</button>
+              <button class="secondary-btn" id="shuffleBtn" type="button">换一套</button>
+            </div>
+
+            <div class="logic-block">
+              <h3>为什么推荐</h3>
+              <ul id="recommendReasons"></ul>
+            </div>
+
+            <div class="outfit-list" id="outfitList"></div>
+          </article>
+
+          <article class="screen" id="closetScreen" aria-labelledby="closetTab">
+            <div class="filter-strip" id="categoryFilters"></div>
+            <div class="closet-stats">
+              <div>
+                <span id="totalCount">0</span>
+                <small>件衣服</small>
+              </div>
+              <div>
+                <span id="lowUseCount">0</span>
+                <small>低利用</small>
+              </div>
+              <div>
+                <span id="duplicateCount">0</span>
+                <small>重复品类</small>
+              </div>
+            </div>
+            <div class="closet-grid" id="closetGrid"></div>
+          </article>
+
+          <article class="screen" id="uploadScreen" aria-labelledby="uploadTab">
+            <label class="upload-zone" for="photoInput">
+              <input id="photoInput" type="file" accept="image/*" capture="environment" />
+              <span class="camera-mark">＋</span>
+              <strong>拍照或上传一件衣服</strong>
+              <small>原型会模拟 AI 分类，并让你确认标签</small>
+            </label>
+
+            <div class="draft-panel" id="draftPanel">
+              <div class="draft-image" id="draftImage"></div>
+              <div class="draft-fields">
+                <label>
+                  名称
+                  <input id="itemName" value="新上传单品" />
+                </label>
+                <label>
+                  类别
+                  <select id="itemCategory">
+                    <option>T 恤</option>
+                    <option>衬衫</option>
+                    <option>裤子</option>
+                    <option>裙子</option>
+                    <option>连衣裙</option>
+                    <option>外套</option>
+                    <option>鞋子</option>
+                  </select>
+                </label>
+                <label>
+                  厚薄
+                  <select id="itemWeight">
+                    <option>薄</option>
+                    <option>中等</option>
+                    <option>厚</option>
+                  </select>
+                </label>
+                <label>
+                  适合温度
+                  <select id="itemTemp">
+                    <option>22-30°C</option>
+                    <option>16-24°C</option>
+                    <option>8-18°C</option>
+                    <option>0-10°C</option>
+                  </select>
+                </label>
+                <button class="primary-btn" id="saveDraftBtn" type="button">确认入库</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="screen" id="declutterScreen" aria-labelledby="declutterTab">
+            <div class="section-head">
+              <h2>整理建议</h2>
+              <p>优先处理很少穿、重复度高、状态不佳的衣服。</p>
+            </div>
+            <div class="decision-list" id="decisionList"></div>
+          </article>
+
+          <article class="screen" id="shopScreen" aria-labelledby="shopTab">
+            <div class="section-head">
+              <h2>购物清单</h2>
+              <p>少买，但每一件都补齐真实缺口。</p>
+            </div>
+            <div class="shopping-summary">
+              <strong>本月建议预算：¥600 以内</strong>
+              <span>优先买 1 件，暂缓 3 类重复单品</span>
+            </div>
+            <div class="shopping-list" id="shoppingList"></div>
+            <div class="do-not-buy">
+              <h3>近期不建议再买</h3>
+              <div id="avoidList"></div>
+            </div>
+          </article>
+        </section>
+
+        <nav class="tabs" aria-label="底部导航">
+          <button class="tab active" id="todayTab" data-screen="todayScreen" data-title="今日" type="button">
+            <span>⌂</span>
+            今日
+          </button>
+          <button class="tab" id="closetTab" data-screen="closetScreen" data-title="衣橱" type="button">
+            <span>▦</span>
+            衣橱
+          </button>
+          <button class="tab upload-tab" id="uploadTab" data-screen="uploadScreen" data-title="上传" type="button">
+            <span>＋</span>
+            上传
+          </button>
+          <button class="tab" id="declutterTab" data-screen="declutterScreen" data-title="整理" type="button">
+            <span>◇</span>
+            整理
+          </button>
+          <button class="tab" id="shopTab" data-screen="shopScreen" data-title="购物" type="button">
+            <span>¥</span>
+            购物
+          </button>
+        </nav>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>

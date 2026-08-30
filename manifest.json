@@ -1,0 +1,35 @@
+{
+  "name": "衣橱日签",
+  "short_name": "衣橱",
+  "description": "个人和家庭自用的衣橱管理、天气穿搭和预算整理 PWA。",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f8f5ed",
+  "theme_color": "#f8f5ed",
+  "lang": "zh-CN",
+  "categories": ["lifestyle", "productivity"],
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "今日穿搭",
+      "short_name": "今日",
+      "url": "./index.html#today",
+      "icons": [{ "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "上传衣服",
+      "short_name": "上传",
+      "url": "./index.html#upload",
+      "icons": [{ "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    }
+  ]
+}

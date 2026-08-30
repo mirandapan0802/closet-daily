@@ -313,7 +313,7 @@ h3 {
   width: 62px;
   aspect-ratio: 1;
   border-radius: 7px;
-  background-image: url("assets/wardrobe-flatlay.png");
+  background-image: url("wardrobe-flatlay.png");
   background-size: 270px auto;
   background-color: #e7e1d7;
 }

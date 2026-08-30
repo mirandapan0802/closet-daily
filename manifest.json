@@ -12,7 +12,7 @@
   "categories": ["lifestyle", "productivity"],
   "icons": [
     {
-      "src": "assets/icon.svg",
+      "src": "icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
@@ -23,13 +23,13 @@
       "name": "今日穿搭",
       "short_name": "今日",
       "url": "./index.html#today",
-      "icons": [{ "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+      "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }]
     },
     {
       "name": "上传衣服",
       "short_name": "上传",
       "url": "./index.html#upload",
-      "icons": [{ "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+      "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }]
     }
   ]
 }
